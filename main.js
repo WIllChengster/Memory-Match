@@ -3,7 +3,12 @@ $(document).ready(initiateApp);
 
 function initiateApp(){
     $('.card').on('click',card_clicked);
-
+    display_stats();
+    $('button').on('click',function(){
+        games_played +=1;
+        reset_stats();
+        display_stats();
+    })
 }
 
 
@@ -13,9 +18,12 @@ function initiateApp(){
 
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches=2;
+var total_possible_matches = 9;
 var match_counter = 0;
-
+var matches = 0;
+var attempts = 0;
+var accuracy = 0;
+var games_played = 0;
 
 
 function card_clicked(){
@@ -54,9 +62,19 @@ function card_clicked(){
                     .on('click',card_clicked);
 
             }, 2000);
-
         }
-
-
         }
+}
+
+function display_stats(){
+    $('.games-played > .value ').text(games_played);
+    $('.attempts > .value').text(attempts);
+    $('.accuracy > .value').text(accuracy +'%')
+}
+
+function reset_stats(){
+    games_played = 0;
+    matches = 0;
+    attempts = 0;
+    display_stats()
 }
