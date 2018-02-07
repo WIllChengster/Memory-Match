@@ -26,23 +26,28 @@ var cardFrontArray = [
 function createCards(){
 
     for(var i=0; i<9; i++){
-        var outerCard = $('<div>').addClass('outer');
-        var card = $('<div>').addClass('card');
-        var front = $('<div>').addClass('front');
-        var back = $('<div>').addClass('back');
-        var frontIndex = Math.floor(Math.random()*9);
+        for (var x=0; x<2; x++){
+            var outerCard = $('<div>').addClass('outer');
+            var card = $('<div>').addClass('card');
+            var front = $('<div>').addClass('front');
+            var back = $('<div>').addClass('back');
+            var frontIndex = Math.floor(Math.random()*9);
 
-        $(front).css(
-            'background-image', cardFrontArray[frontIndex]
-        );
+            $(front).css(
+                'background-image', cardFrontArray[frontIndex]
+            );
 
-        $(back).css(
-            'background-image', 'url(../images/yugioh-card-back.jpg)'
-        );
-        $(card).append(front);
-        $(card).append(back);
-        $(outerCard).append(card);
-        $('#game-area').append(outerCard)
+            $(back).css(
+                'background-image', 'url(../images/yugioh-card-back.jpg)'
+            );
+            $(card).append(front);
+            $(card).append(back);
+            $(outerCard).append(card);
+            $('#game-area').append(outerCard);
+
+        }
+
+
     }
 
 
