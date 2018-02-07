@@ -65,3 +65,7 @@ section{
 .flipped{
     transform:rotateY(-180deg);
 }
+
+.click1 {
+    pointer-events: none;
+}

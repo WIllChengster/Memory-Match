@@ -63,7 +63,6 @@ function card_clicked(){
             }, 2000);
         }
         }
-
 }
 
 function display_stats(){
