@@ -5,7 +5,6 @@ function initiateApp(){
     $('.card').on('click',card_clicked);
     display_stats();
     $('button').on('click',function(){
-        games_played +=1;
         reset_stats();
         display_stats();
     })
@@ -64,6 +63,7 @@ function card_clicked(){
             }, 2000);
         }
         }
+
 }
 
 function display_stats(){
@@ -73,7 +73,7 @@ function display_stats(){
 }
 
 function reset_stats(){
-    games_played = 0;
+    games_played +=1 ;
     matches = 0;
     attempts = 0;
     display_stats()
