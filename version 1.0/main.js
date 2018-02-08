@@ -6,14 +6,13 @@ function initiateApp(){
     createCards();
     $('#game-area').on('click', '.flip' , flipOnClick);
     $('#game-area').on('click', '.flip', card_clicked);
-
     display_stats();
-
     $('button').on('click', function(){
         reset_stats();
         display_stats();
 })
 }
+
 function flipOnClick(){
     $(this).addClass('flipped')
 }
@@ -26,8 +25,6 @@ var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
-
-
 var cardFrontArray = [
     'url(../images/dbs.png)',
     'url(../images/hero-academia.jpg)',
@@ -41,10 +38,8 @@ var cardFrontArray = [
 ];
 
 var cards=[];
-
 function createCards(){
     var newCardsArray = cardFrontArray.slice();
-
     for(var i=0; i<9; i++){
         var cardflip = $('<div>').addClass('flip');
         var card = $('<div>').addClass('card');
@@ -52,22 +47,17 @@ function createCards(){
         var back = $('<div>').addClass('back');
         var frontIndex = Math.floor(Math.random()*(newCardsArray.length));
         var gameArea = $('#game-area');
-
         $(front).css(
             'background-image', newCardsArray[frontIndex]
         );
-
         newCardsArray.splice(frontIndex,1);
-
         $(back).css(
             'background-image', 'url(../images/yugioh-card-back.jpg)'
         );
         $(card).append(front);
         $(card).append(back);
         $(cardflip).append(card);
-        // $(gameArea).append(cardflip);
         var cardflip2 = $(cardflip).clone();
-        // $(gameArea).append(card2);
         cards.push(cardflip);
         cards.push(cardflip2);
 
@@ -88,6 +78,7 @@ function card_clicked(){
         first_card_clicked=$('.click1').html()
     } else {
         $(this).addClass('click2');
+        attempts +=1;
         second_card_clicked = $('.click2').html();
         if (first_card_clicked === second_card_clicked){
             console.log("matched!");
@@ -104,28 +95,24 @@ function card_clicked(){
             setTimeout(function(){
                 first_card_clicked = null;
                 second_card_clicked = null;
-                $('div').removeClass('flipped click1 click2');
+                $('.click1, .click2').removeClass('flipped click1 click2');
                 $('#game-area').on('click','.flip', flipOnClick);
                 $('#game-area').on('click','.flip', card_clicked);
-                console.log('hello')
+
             }, 1100)
         }
-    }
-
+    } display_stats();
 }
 
-
-
-
-
-
-
-
 function display_stats(){
-    console.log('hello');
+    console.log('updating stats');
     $('.games-played > .value ').text(games_played);
     $('.attempts > .value').text(attempts);
-    $('.accuracy > .value').text(accuracy +'%')
+    accuracy = (match_counter/attempts)*100;
+    if(match_counter===0){
+        accuracy=0;
+    }
+    $('.accuracy > .value').text(accuracy.toFixed(2) +'%')
 }
 
 function reset_stats(){
@@ -133,12 +120,18 @@ function reset_stats(){
     matches = 0;
     attempts = 0;
     display_stats();
-    $('div').removeClass('flipped');
+    $('.flip').addClass('flipped');
+    setTimeout(function(){
+        $('div').removeClass('flipped');
+    },2000);
+
 
     setTimeout(function(){
+        setTimeout(function(){
+            $('div').removeClass('flipped');
+        },2000);
         $('.flip').remove();
         createCards();
-    },1000);
+    },3000);
 
-    console.log('hello');
 }
