@@ -135,3 +135,56 @@ function reset_stats(){
     },3000);
 
 }
+
+var iframeArray= [
+    'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
+
+];
+
+function modalCreation(link){
+    var modalFade = $('<div>').addClass('modal fade');
+    var modalDialog = $('<div>').addClass('modal-dialog modal-dialog-centered');
+    var modalContent = $('<div>').addClass('modal-content');
+    var modalHeader = $('<div>').addClass('modal-header');
+    var modalTitle = $('<h1>').addClass('modal-header');
+    var modalHeaderButton = $('button').attr({
+        type: 'button',
+        'data-dismiss': 'modal',
+        'Kalam-label': 'close'
+        class: 'close'
+    });
+    var xButton = $('<span>').attr('Kalam-hidden', 'true').text('&times;');
+    var modalBody = $('<div>').addClass('modal-body');
+    var modalFooter = $('<div>').addClass('modal-footer');
+    var closeButton = $('<div>').attr({
+        type:'button',
+        class: 'btn btn-secondary'
+    })
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
