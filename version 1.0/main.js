@@ -25,6 +25,48 @@ var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
+
+var cardData = {
+    dbs:{
+        front:'url(../images/dbs.png)',
+        video: ''
+    },
+    heroAcademia:{
+        front:'url(../images/hero-academia.jpg)',
+        video: ''
+
+    },
+    inuyasha:{
+        front: 'url(../images/inuyasha.jpg)',
+        video: ''
+    },
+    FMA:{
+        front: 'url(../images/FMA.png)',
+        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0'
+    },
+    erased:{
+        front: 'url(../images/erased.jpeg)',
+        video: ''
+    },
+    tokyoGhoul:{
+        front: 'url(../images/tokyo-ghoul.jpg)',
+        video: ''
+    },
+    onePunch:{
+        front: 'url(../images/one-punch.jpg)',
+        video: ''
+    },
+    yourLie:{
+        front: 'url(../images/your-lie-in-april.jpg)',
+        video: ''
+    },
+    yourName:{
+        front: 'url(../images/your-name.jpg)',
+        video: ''
+    }
+
+};
+
 var cardFrontArray = [
     'url(../images/dbs.png)',
     'url(../images/hero-academia.jpg)',
@@ -45,12 +87,11 @@ function createCards(){
         var card = $('<div>').addClass('card');
         var front = $('<div>').addClass('front');
         var back = $('<div>').addClass('back');
-        var frontIndex = Math.floor(Math.random()*(newCardsArray.length));
         var gameArea = $('#game-area');
         $(front).css(
-            'background-image', newCardsArray[frontIndex]
+            'background-image', newCardsArray[newCardsArray.length-1]
         );
-        newCardsArray.splice(frontIndex,1);
+        newCardsArray.splice(newCardsArray.length-1,1);
         $(back).css(
             'background-image', 'url(../images/yugioh-card-back.jpg)'
         );
@@ -84,6 +125,9 @@ function card_clicked(){
         if (first_card_clicked === second_card_clicked){
             console.log("matched!");
             match_counter +=1;
+
+
+
             first_card_clicked = null;
             second_card_clicked = null;
             $('div').removeClass('click1 click2');
@@ -136,24 +180,6 @@ function reset_stats(){
     },3000);
 
 }
-
-var iframeArray= [
-    'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
-
-];
-
-function modalVideo(){
-    $('#modalVideo').modal('toggle');
-    $('#modalVideo').addClass('play');
-    $('iframe').attr('src', 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0')
-
-}
-
-
-
-
-
-
 
 
 

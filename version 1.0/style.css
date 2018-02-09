@@ -103,7 +103,7 @@ iframe{
 }
 
 #modalVideo *{
-    background-color:darkred
-;
+    background-color:darkredl;
+    font-family: 'Kalam', cursive;
     border:none;
 }
