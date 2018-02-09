@@ -21,13 +21,12 @@ function flipOnClick(){
 
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches = 2;
+var total_possible_matches = 9;
 var match_counter = 0;
 var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
-
 var cardData = {
     dbs:{
         front:'url(../images/dbs.png)',
@@ -40,45 +39,46 @@ var cardData = {
         id: 'heroAcademia'
 
     },
-    // inuyasha:{
-    //     front: 'url(../images/inuyasha.jpg)',
-    //     video: 'inu video example',
-    //     id: 'inuyasha'
-    // },
-    // FMA:{
-    //     front: 'url(../images/FMA.png)',
-    //     video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
-    //     id:'FMA'
-    // },
-    // erased:{
-    //     front: 'url(../images/erased.jpeg)',
-    //     video: 'erased video example',
-    //     id:'erased'
-    // },
-    // tokyoGhoul:{
-    //     front: 'url(../images/tokyo-ghoul.jpg)',
-    //     video: 'tokyo video example',
-    //     id:'tokyoGhoul'
-    // },
-    // onePunch:{
-    //     front: 'url(../images/one-punch.jpg)',
-    //     video: 'one punc hvideo example',
-    //     id:'onePunch'
-    // },
-    // yourLie:{
-    //     front: 'url(../images/your-lie-in-april.jpg)',
-    //     video: 'yourlie video example',
-    //     id: 'yourLie'
-    // },
-    // yourName:{
-    //     front: 'url(../images/your-name.jpg)',
-    //     video: 'yourname video example',
-    //     id: 'yourName'
-    // }
+    inuyasha:{
+        front: 'url(../images/inuyasha.jpg)',
+        video: 'inu video example',
+        id: 'inuyasha'
+    },
+    FMA:{
+        front: 'url(../images/FMA.png)',
+        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
+        id:'FMA'
+    },
+    erased:{
+        front: 'url(../images/erased.jpeg)',
+        video: 'erased video example',
+        id:'erased'
+    },
+    tokyoGhoul:{
+        front: 'url(../images/tokyo-ghoul.jpg)',
+        video: 'tokyo video example',
+        id:'tokyoGhoul'
+    },
+    onePunch:{
+        front: 'url(../images/one-punch.jpg)',
+        video: 'one punc hvideo example',
+        id:'onePunch'
+    },
+    yourLie:{
+        front: 'url(../images/your-lie-in-april.jpg)',
+        video: 'yourlie video example',
+        id: 'yourLie'
+    },
+    yourName:{
+        front: 'url(../images/your-name.jpg)',
+        video: 'yourname video example',
+        id: 'yourName'
+    }
 };
 
-var cards=[];
+
 function createCards(){
+    var cards=[];
     for(var index in cardData){
         var cardflip = $('<div>').addClass('flip').attr('id',cardData[index].id);
         var card = $('<div>').addClass('card');
@@ -114,11 +114,11 @@ function createCards(){
 function card_clicked(){
     if (first_card_clicked === null){
         $(this).addClass('click1');
-        first_card_clicked=$('.click1').html()
+        first_card_clicked=$('.click1').attr('id')
     } else {
         $(this).addClass('click2');
         attempts +=1;
-        second_card_clicked = $('.click2').html();
+        second_card_clicked = $('.click2').attr('id');
         if (first_card_clicked === second_card_clicked){
             console.log("matched!");
             match_counter +=1;
@@ -132,7 +132,6 @@ function card_clicked(){
                 alert("You have own!");
                 $('.background').css({
                     'background-image': 'url(../images/confetti.gif)',
-                    'z-index': '99',
                     'width': '100%',
                     'height': '100%',
                     'position': 'absolute'
