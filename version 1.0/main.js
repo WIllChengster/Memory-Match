@@ -2,6 +2,8 @@
 
 $(document).ready(initiateApp);
 
+
+
 function initiateApp(){
     createCards();
     $('#game-area').on('click', '.flip' , flipOnClick);
@@ -19,7 +21,7 @@ function flipOnClick(){
 
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches = 9;
+var total_possible_matches = 2;
 var match_counter = 0;
 var matches = 0;
 var attempts = 0;
@@ -29,69 +31,64 @@ var games_played = 0;
 var cardData = {
     dbs:{
         front:'url(../images/dbs.png)',
-        video: ''
+        video: 'dbs video example',
+        id: 'dbs'
     },
     heroAcademia:{
         front:'url(../images/hero-academia.jpg)',
-        video: ''
+        video: 'hero video example',
+        id: 'heroAcademia'
 
     },
-    inuyasha:{
-        front: 'url(../images/inuyasha.jpg)',
-        video: ''
-    },
-    FMA:{
-        front: 'url(../images/FMA.png)',
-        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0'
-    },
-    erased:{
-        front: 'url(../images/erased.jpeg)',
-        video: ''
-    },
-    tokyoGhoul:{
-        front: 'url(../images/tokyo-ghoul.jpg)',
-        video: ''
-    },
-    onePunch:{
-        front: 'url(../images/one-punch.jpg)',
-        video: ''
-    },
-    yourLie:{
-        front: 'url(../images/your-lie-in-april.jpg)',
-        video: ''
-    },
-    yourName:{
-        front: 'url(../images/your-name.jpg)',
-        video: ''
-    }
-
+    // inuyasha:{
+    //     front: 'url(../images/inuyasha.jpg)',
+    //     video: 'inu video example',
+    //     id: 'inuyasha'
+    // },
+    // FMA:{
+    //     front: 'url(../images/FMA.png)',
+    //     video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
+    //     id:'FMA'
+    // },
+    // erased:{
+    //     front: 'url(../images/erased.jpeg)',
+    //     video: 'erased video example',
+    //     id:'erased'
+    // },
+    // tokyoGhoul:{
+    //     front: 'url(../images/tokyo-ghoul.jpg)',
+    //     video: 'tokyo video example',
+    //     id:'tokyoGhoul'
+    // },
+    // onePunch:{
+    //     front: 'url(../images/one-punch.jpg)',
+    //     video: 'one punc hvideo example',
+    //     id:'onePunch'
+    // },
+    // yourLie:{
+    //     front: 'url(../images/your-lie-in-april.jpg)',
+    //     video: 'yourlie video example',
+    //     id: 'yourLie'
+    // },
+    // yourName:{
+    //     front: 'url(../images/your-name.jpg)',
+    //     video: 'yourname video example',
+    //     id: 'yourName'
+    // }
 };
-
-var cardFrontArray = [
-    'url(../images/dbs.png)',
-    'url(../images/hero-academia.jpg)',
-    'url(../images/inuyasha.jpg)',
-    'url(../images/FMA.png)',
-    'url(../images/erased.jpeg)',
-    'url(../images/tokyo-ghoul.jpg)',
-    'url(../images/one-punch.jpg)',
-    'url(../images/your-lie-in-april.jpg)',
-    'url(../images/your-name.jpg)'
-];
 
 var cards=[];
 function createCards(){
-    var newCardsArray = cardFrontArray.slice();
-    for(var i=0; i<9; i++){
-        var cardflip = $('<div>').addClass('flip');
+    for(var index in cardData){
+        var cardflip = $('<div>').addClass('flip').attr('id',cardData[index].id);
         var card = $('<div>').addClass('card');
         var front = $('<div>').addClass('front');
         var back = $('<div>').addClass('back');
         var gameArea = $('#game-area');
         $(front).css(
-            'background-image', newCardsArray[newCardsArray.length-1]
+            'background-image', cardData[index].front
         );
-        newCardsArray.splice(newCardsArray.length-1,1);
+        console.log('cardData[index].front');
         $(back).css(
             'background-image', 'url(../images/yugioh-card-back.jpg)'
         );
@@ -104,8 +101,8 @@ function createCards(){
 
 
     }
-    console.log(newCardsArray);
-    for(i=0; i<18; i++){
+    var amountOfCards = cards.length;
+    for(var i=0; i<amountOfCards; i++){
         var randomIndex = Math.floor(Math.random()*(cards.length-1));
         console.log(randomIndex);
         $(gameArea).append(cards[randomIndex]);
@@ -132,7 +129,15 @@ function card_clicked(){
             second_card_clicked = null;
             $('div').removeClass('click1 click2');
             if (match_counter === total_possible_matches){
-                alert("You have own!")
+                alert("You have own!");
+                $('.background').css({
+                    'background-image': 'url(../images/confetti.gif)',
+                    'z-index': '99',
+                    'width': '100%',
+                    'height': '100%',
+                    'position': 'absolute'
+                })
+
             }
         } else {
             $('#game-area').off('click', flipOnClick);
