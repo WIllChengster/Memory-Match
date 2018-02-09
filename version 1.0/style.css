@@ -97,3 +97,13 @@ section{
 .click1 {
     pointer-events: none;
 }
+
+iframe{
+    width:100%;
+}
+
+#modalVideo *{
+    background-color:darkred
+;
+    border:none;
+}

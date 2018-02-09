@@ -7,7 +7,7 @@ function initiateApp(){
     $('#game-area').on('click', '.flip' , flipOnClick);
     $('#game-area').on('click', '.flip', card_clicked);
     display_stats();
-    $('button').on('click', function(){
+    $('.reset').on('click', function(){
         reset_stats();
         display_stats();
 })
@@ -65,7 +65,8 @@ function createCards(){
     }
     console.log(newCardsArray);
     for(i=0; i<18; i++){
-        var randomIndex = Math.floor(Math.random()*(cards.length));
+        var randomIndex = Math.floor(Math.random()*(cards.length-1));
+        console.log(randomIndex);
         $(gameArea).append(cards[randomIndex]);
         cards.splice(randomIndex,1)
     }
@@ -141,27 +142,10 @@ var iframeArray= [
 
 ];
 
-function modalCreation(link){
-    var modalFade = $('<div>').addClass('modal fade');
-    var modalDialog = $('<div>').addClass('modal-dialog modal-dialog-centered');
-    var modalContent = $('<div>').addClass('modal-content');
-    var modalHeader = $('<div>').addClass('modal-header');
-    var modalTitle = $('<h1>').addClass('modal-header');
-    var modalHeaderButton = $('button').attr({
-        type: 'button',
-        'data-dismiss': 'modal',
-        'Kalam-label': 'close'
-        class: 'close'
-    });
-    var xButton = $('<span>').attr('Kalam-hidden', 'true').text('&times;');
-    var modalBody = $('<div>').addClass('modal-body');
-    var modalFooter = $('<div>').addClass('modal-footer');
-    var closeButton = $('<div>').attr({
-        type:'button',
-        class: 'btn btn-secondary'
-    })
-
-
+function modalVideo(){
+    $('#modalVideo').modal('toggle');
+    $('#modalVideo').addClass('play');
+    $('iframe').attr('src', 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0')
 
 }
 
