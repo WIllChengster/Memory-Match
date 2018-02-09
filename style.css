@@ -40,7 +40,8 @@ section {
     display: inline-block;
     float:right;
     background-color:cornflowerblue;
-    width: 90%;
+    width: 80%;
+    padding: .45% 5%;
 }
 
 .front{
@@ -55,7 +56,7 @@ section {
 
 .card {
     display:inline-block;
-    height: 30vh;
-    width: 10vw;
-    margin: 1%;
+    height: 15%;
+    width: 10%;
+    margin: .5%;
 }
