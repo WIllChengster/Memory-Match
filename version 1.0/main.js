@@ -39,14 +39,14 @@ var cardData = {
         id: 'heroAcademia'
 
     },
-    inuyasha:{
-        front: 'url(../images/inuyasha.jpg)',
-        video: 'inu video example',
-        id: 'inuyasha'
+    haikyuu:{
+        front: 'url(../images/haikyuu.jpg)',
+        video: 'https://www.youtube.com/embedOLN2N2MAe60?sttart=6&end1203&autoplay=1',
+        id: 'haikyuu'
     },
     FMA:{
         front: 'url(../images/FMA.png)',
-        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1',
+        video:'https://www.youtube.com/embed/UXbskDZKD7o?start=93&autoplay=1',
         id:'FMA'
     },
     erased:{
@@ -56,7 +56,7 @@ var cardData = {
     },
     tokyoGhoul:{
         front: 'url(../images/tokyo-ghoul.jpg)',
-        video: 'tokyo video example',
+        video: 'https://www.youtube.com/embed/1wx-hWSTN6k?autoplay=1',
         id:'tokyoGhoul'
     },
     onePunch:{
@@ -64,14 +64,14 @@ var cardData = {
         video: 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
         id:'onePunch'
     },
-    yourLie:{
-        front: 'url(../images/your-lie-in-april.jpg)',
-        video: 'yourlie video example',
+    naruto:{
+        front: 'url(../images/naruto.jpg)',
+        video: 'https://www.youtube.com/embed/1_6eg-KpHJ8?start=54&end=96&autoplay=1',
         id: 'yourLie'
     },
     yourName:{
         front: 'url(../images/your-name.jpg)',
-        video: 'yourname video example',
+        video: 'https://www.youtube.com/embed/woAHwpOLmyY?autoplay=1',
         id: 'yourName'
     }
 };
