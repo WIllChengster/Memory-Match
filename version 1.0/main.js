@@ -9,7 +9,7 @@ function initiateApp(){
     $('#game-area').on('click', '.flip' , flipOnClick);
     $('#game-area').on('click', '.flip', card_clicked);
     display_stats();
-    $('.reset').on('click', function(){
+    $('.container').on('click','.reset', function(){
         reset_stats();
         display_stats();
 })
@@ -30,12 +30,12 @@ var games_played = 0;
 var cardData = {
     dbs:{
         front:'url(../images/dbs.png)',
-        video: 'dbs video example',
+        video: 'https://www.youtube.com/embed/v56GdAx2YZM?start=81&end=140&autoplay=1',
         id: 'dbs'
     },
     heroAcademia:{
         front:'url(../images/hero-academia.jpg)',
-        video: 'hero video example',
+        video: 'https://www.youtube.com/embed/lAFVR85hDNo?start=227&autoplay=1',
         id: 'heroAcademia'
 
     },
@@ -46,12 +46,12 @@ var cardData = {
     },
     FMA:{
         front: 'url(../images/FMA.png)',
-        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
+        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1',
         id:'FMA'
     },
     erased:{
         front: 'url(../images/erased.jpeg)',
-        video: 'erased video example',
+        video: 'https://www.youtube.com/embedY6c8MaTHKfM?start=33&autoplay=1',
         id:'erased'
     },
     tokyoGhoul:{
@@ -61,7 +61,7 @@ var cardData = {
     },
     onePunch:{
         front: 'url(../images/one-punch.jpg)',
-        video: 'one punc hvideo example',
+        video: 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
         id:'onePunch'
     },
     yourLie:{
@@ -122,6 +122,7 @@ function card_clicked(){
         if (first_card_clicked === second_card_clicked){
             console.log("matched!");
             match_counter +=1;
+            $('iframe').attr('src', cardData[second_card_clicked].video);
 
 
 
@@ -165,6 +166,8 @@ function display_stats(){
 }
 
 function reset_stats(){
+    $('button').removeClass('reset');
+    $('iframe').removeAttr('src');
     games_played +=1 ;
     matches = 0;
     attempts = 0;
@@ -172,6 +175,7 @@ function reset_stats(){
     $('.flip').addClass('flipped');
     setTimeout(function(){
         $('div').removeClass('flipped');
+
     },2000);
 
 
@@ -181,7 +185,9 @@ function reset_stats(){
         },2000);
         $('.flip').remove();
         createCards();
+        $('button').addClass('reset');
     },3000);
+
 
 }
 
