@@ -214,7 +214,7 @@ function pokemon(){
 }
 
 function yugioh(){
-    $('.back').css('background-image', 'url(../images/yugioh-card-back.png)')
+    $('.back').css('background-image', 'url(../images/yugioh-card-back.jpg)')
 }
 
 function redBicycle(){
