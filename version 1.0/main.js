@@ -9,9 +9,10 @@ function initiateApp(){
     $('#game-area').on('click', '.flip' , flipOnClick);
     $('#game-area').on('click', '.flip', card_clicked);
     display_stats();
-    $('.reset').on('click', function(){
+    $('.container').on('click','.reset', function(){
         reset_stats();
         display_stats();
+
 })
 }
 
@@ -28,51 +29,65 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var cardData = {
+    cardBacks: {
+        pokemon:'url(../images/pokemonCardBack.png)',
+        redBicycle: '(url(../images/red-bicycle.png)',
+        blueBicycle: 'url(../images/blue-bicycle.png)'
+    },
     dbs:{
         front:'url(../images/dbs.png)',
-        video: 'dbs video example',
-        id: 'dbs'
+        video: 'https://www.youtube.com/embed/v56GdAx2YZM?start=81&end=140&autoplay=1&showinfo=0',
+        id: 'dbs',
+        background: 'url(../images/dbsBG.jpg)'
     },
     heroAcademia:{
         front:'url(../images/hero-academia.jpg)',
-        video: 'hero video example',
-        id: 'heroAcademia'
+        video: 'https://www.youtube.com/embed/lAFVR85hDNo?start=227&autoplay=1&controls=0&showinfo=0',
+        id: 'heroAcademia',
+        background: 'url(../images/myHerobg.png)'
 
     },
-    inuyasha:{
-        front: 'url(../images/inuyasha.jpg)',
-        video: 'inu video example',
-        id: 'inuyasha'
+    haikyuu:{
+        front: 'url(../images/haikyuu.jpg)',
+        video: 'https://www.youtube.com/embed/OLN2N2MAe60?sttart=6&end1203&autoplay=1&controls=0&showinfo=0',
+        id: 'haikyuu',
+        background: 'url(../images/haikyuuBG.jpg)'
     },
     FMA:{
         front: 'url(../images/FMA.png)',
-        video:'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
-        id:'FMA'
+        video:'https://www.youtube.com/embed/UXbskDZKD7o?start=93&autoplay=1&showinfo=0&controls=0',
+        id:'FMA',
+        background: 'url(../images/FMA-BG.png)'
     },
     erased:{
         front: 'url(../images/erased.jpeg)',
-        video: 'erased video example',
-        id:'erased'
+        video: 'https://www.youtube.com/embed/Y6c8MaTHKfM?start=33&autoplay=1&controls=0&showinfo=0',
+        id:'erased',
+        background: 'url(../images/erasedBG.jpg)'
     },
     tokyoGhoul:{
         front: 'url(../images/tokyo-ghoul.jpg)',
-        video: 'tokyo video example',
-        id:'tokyoGhoul'
+        video: 'https://www.youtube.com/embed/1wx-hWSTN6k?autoplay=1&controls=0&showinfo=0',
+        id:'tokyoGhoul',
+        background: 'url(../images/tokyo-ghoul-BG.jpg'
     },
     onePunch:{
         front: 'url(../images/one-punch.jpg)',
-        video: 'one punc hvideo example',
-        id:'onePunch'
+        video: 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0&showinfo=0',
+        id:'onePunch',
+        background: 'url(../images/one-punch-bg.jpg)'
     },
-    yourLie:{
-        front: 'url(../images/your-lie-in-april.jpg)',
-        video: 'yourlie video example',
-        id: 'yourLie'
+    naruto:{
+        front: 'url(../images/naruto.jpg)',
+        video: 'https://www.youtube.com/embed/1_6eg-KpHJ8?start=54&end=96&autoplay=1&controls=0&showinfo=0',
+        id: 'naruto',
+        background:'url(../images/narutoBG.jpg)'
     },
     yourName:{
         front: 'url(../images/your-name.jpg)',
-        video: 'yourname video example',
-        id: 'yourName'
+        video: 'https://www.youtube.com/embed/woAHwpOLmyY?autoplay=1&controls=0&showinfo=0',
+        id: 'yourName',
+        background:'url(../images/your-name-BG.jpg)'
     }
 };
 
@@ -122,6 +137,8 @@ function card_clicked(){
         if (first_card_clicked === second_card_clicked){
             console.log("matched!");
             match_counter +=1;
+            $('iframe').attr('src', cardData[second_card_clicked].video);
+            $('body').css('background-image', cardData[second_card_clicked].background);
 
 
 
@@ -165,6 +182,8 @@ function display_stats(){
 }
 
 function reset_stats(){
+    $('button').removeClass('reset');
+    $('iframe').removeAttr('src');
     games_played +=1 ;
     matches = 0;
     attempts = 0;
@@ -172,6 +191,7 @@ function reset_stats(){
     $('.flip').addClass('flipped');
     setTimeout(function(){
         $('div').removeClass('flipped');
+
     },2000);
 
 
@@ -181,15 +201,28 @@ function reset_stats(){
         },2000);
         $('.flip').remove();
         createCards();
+        $('button').addClass('reset');
     },3000);
+
+    $('iframe').attr('src','https://www.youtube.com/embed/mAH7CLUmvhE?autoplay=1&controls=0&showinfo=0')
+    $('body').css('background-image','url(../images/sky-background.jpg')
 
 }
 
+function pokemon(){
+    $('.back').css('background-image', 'url(../images/pokemonCardBack.png)')
+}
 
+function yugioh(){
+    $('.back').css('background-image', 'url(../images/yugioh-card-back.jpg)')
+}
 
-
-
-
+function redBicycle(){
+    $('.back').css('background-image', 'url(../images/red-bicycle.png)')
+}
+function blueBicycle(){
+    $('.back').css('background-image', 'url(../images/blue-bicycle.png)')
+}
 
 
 
