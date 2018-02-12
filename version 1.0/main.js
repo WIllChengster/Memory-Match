@@ -29,11 +29,6 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var cardData = {
-    cardBacks: {
-        pokemon:'url(../images/pokemonCardBack.png)',
-        redBicycle: '(url(../images/red-bicycle.png)',
-        blueBicycle: 'url(../images/blue-bicycle.png)'
-    },
     dbs:{
         front:'url(../images/dbs.png)',
         video: 'https://www.youtube.com/embed/v56GdAx2YZM?start=81&end=140&autoplay=1&showinfo=0',
