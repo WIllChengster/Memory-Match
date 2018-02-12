@@ -12,6 +12,7 @@ function initiateApp(){
     $('.container').on('click','.reset', function(){
         reset_stats();
         display_stats();
+
 })
 }
 
@@ -28,51 +29,65 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var cardData = {
+    cardBacks: {
+        pokemon:'url(../images/pokemonCardBack.png)',
+        redBicycle: '(url(../images/red-bicycle.png)',
+        blueBicycle: 'url(../images/blue-bicycle.png)'
+    },
     dbs:{
         front:'url(../images/dbs.png)',
-        video: 'https://www.youtube.com/embed/v56GdAx2YZM?start=81&end=140&autoplay=1',
-        id: 'dbs'
+        video: 'https://www.youtube.com/embed/v56GdAx2YZM?start=81&end=140&autoplay=1&showinfo=0',
+        id: 'dbs',
+        background: 'url(../images/dbsBG.jpg)'
     },
     heroAcademia:{
         front:'url(../images/hero-academia.jpg)',
-        video: 'https://www.youtube.com/embed/lAFVR85hDNo?start=227&autoplay=1',
-        id: 'heroAcademia'
+        video: 'https://www.youtube.com/embed/lAFVR85hDNo?start=227&autoplay=1&controls=0&showinfo=0',
+        id: 'heroAcademia',
+        background: 'url(../images/myHerobg.png)'
 
     },
     haikyuu:{
         front: 'url(../images/haikyuu.jpg)',
-        video: 'https://www.youtube.com/embedOLN2N2MAe60?sttart=6&end1203&autoplay=1',
-        id: 'haikyuu'
+        video: 'https://www.youtube.com/embed/OLN2N2MAe60?sttart=6&end1203&autoplay=1&controls=0&showinfo=0',
+        id: 'haikyuu',
+        background: 'url(../images/haikyuuBG.jpg)'
     },
     FMA:{
         front: 'url(../images/FMA.png)',
-        video:'https://www.youtube.com/embed/UXbskDZKD7o?start=93&autoplay=1',
-        id:'FMA'
+        video:'https://www.youtube.com/embed/UXbskDZKD7o?start=93&autoplay=1&showinfo=0&controls=0',
+        id:'FMA',
+        background: 'url(../images/FMA-BG.png)'
     },
     erased:{
         front: 'url(../images/erased.jpeg)',
-        video: 'https://www.youtube.com/embedY6c8MaTHKfM?start=33&autoplay=1',
-        id:'erased'
+        video: 'https://www.youtube.com/embed/Y6c8MaTHKfM?start=33&autoplay=1&controls=0&showinfo=0',
+        id:'erased',
+        background: 'url(../images/erasedBG.jpg)'
     },
     tokyoGhoul:{
         front: 'url(../images/tokyo-ghoul.jpg)',
-        video: 'https://www.youtube.com/embed/1wx-hWSTN6k?autoplay=1',
-        id:'tokyoGhoul'
+        video: 'https://www.youtube.com/embed/1wx-hWSTN6k?autoplay=1&controls=0&showinfo=0',
+        id:'tokyoGhoul',
+        background: 'url(../images/tokyo-ghoul-BG.jpg'
     },
     onePunch:{
         front: 'url(../images/one-punch.jpg)',
-        video: 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0',
-        id:'onePunch'
+        video: 'https://www.youtube.com/embed/km2OPUctni4?start=178&autoplay=1&controls=0&showinfo=0',
+        id:'onePunch',
+        background: 'url(../images/one-punch-bg.jpg)'
     },
     naruto:{
         front: 'url(../images/naruto.jpg)',
-        video: 'https://www.youtube.com/embed/1_6eg-KpHJ8?start=54&end=96&autoplay=1',
-        id: 'yourLie'
+        video: 'https://www.youtube.com/embed/1_6eg-KpHJ8?start=54&end=96&autoplay=1&controls=0&showinfo=0',
+        id: 'naruto',
+        background:'url(../images/narutoBG.jpg)'
     },
     yourName:{
         front: 'url(../images/your-name.jpg)',
-        video: 'https://www.youtube.com/embed/woAHwpOLmyY?autoplay=1',
-        id: 'yourName'
+        video: 'https://www.youtube.com/embed/woAHwpOLmyY?autoplay=1&controls=0&showinfo=0',
+        id: 'yourName',
+        background:'url(../images/your-name-BG.jpg)'
     }
 };
 
@@ -123,6 +138,7 @@ function card_clicked(){
             console.log("matched!");
             match_counter +=1;
             $('iframe').attr('src', cardData[second_card_clicked].video);
+            $('body').css('background-image', cardData[second_card_clicked].background);
 
 
 
@@ -188,14 +204,25 @@ function reset_stats(){
         $('button').addClass('reset');
     },3000);
 
+    $('iframe').attr('src','https://www.youtube.com/embed/mAH7CLUmvhE?autoplay=1&controls=0&showinfo=0')
+    $('body').css('background-image','url(../images/sky-background.jpg')
 
 }
 
+function pokemon(){
+    $('.back').css('background-image', 'url(../images/pokemonCardBack.png)')
+}
 
+function yugioh(){
+    $('.back').css('background-image', 'url(../images/yugioh-card-back.png)')
+}
 
-
-
-
+function redBicycle(){
+    $('.back').css('background-image', 'url(../images/red-bicycle.png)')
+}
+function blueBicycle(){
+    $('.back').css('background-image', 'url(../images/blue-bicycle.png)')
+}
 
 
 
